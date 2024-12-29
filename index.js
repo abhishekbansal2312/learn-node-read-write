@@ -1,18 +1,25 @@
-const express = require("express");
+import express from "express";
+import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
+import connectToDatabase from "./database.js";
+
+import fileSystemRoutes from "./routes/fileSystemRoutes.js";
+import auth from "./routes/auth.js";
+import authenticate from "./middleware/authentication.js";
+import student from "./routes/studentRoutes.js";
+dotenv.config();
+
 const app = express();
-const cookieParser = require("cookie-parser");
+connectToDatabase();
 
 app.use(cookieParser());
 app.use(express.json());
 
-const fileSystemRoutes = require("./routes/fileSystemRoutes.js");
-const auth = require("./routes/auth.js");
-
-const authenticate = require("./middleware/authentication.js");
-
 app.use("/auth", auth);
+app.use("/students", authenticate, student);
 app.use("/", authenticate, fileSystemRoutes);
 
+// Start the server
 const port = 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

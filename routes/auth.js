@@ -1,4 +1,4 @@
-const express = require("express");
+import express from "express";
 
 const routes = express.Router();
 
@@ -24,4 +24,4 @@ routes.post("/logout", (req, res) => {
   });
 });
 
-module.exports = routes;
+export default routes;

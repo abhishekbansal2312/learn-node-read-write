@@ -1,7 +1,8 @@
-const express = require("express");
-const fs = require("fs");
+import express from "express";
+import fs from "fs";
+import getData from "../middleware/getData.js";
+
 const routes = express.Router();
-const getData = require("../middleware/getData");
 
 routes.get("/", getData, (req, res) => {
   res.json(req.data);
@@ -64,4 +65,4 @@ routes.put("/:id", getData, (req, res) => {
   });
 });
 
-module.exports = routes;
+export default routes;

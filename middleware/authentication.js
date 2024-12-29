@@ -1,5 +1,3 @@
-const jwt = require("jsonwebtoken");
-
 const authenticate = (req, res, next) => {
   const token = req.cookies.authtoken;
   console.log(token);
@@ -12,4 +10,4 @@ const authenticate = (req, res, next) => {
   next();
 };
 
-module.exports = authenticate;
+export default authenticate;

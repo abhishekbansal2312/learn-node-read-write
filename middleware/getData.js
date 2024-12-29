@@ -1,4 +1,4 @@
-const fs = require("fs");
+import fs from "fs";
 
 const getData = async (req, res, next) => {
   try {
@@ -14,4 +14,4 @@ const getData = async (req, res, next) => {
   }
 };
 
-module.exports = getData;
+export default getData;
