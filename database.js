@@ -19,4 +19,5 @@ async function connectToDatabase() {
 export default connectToDatabase;
 
 export const db = client.db("test");
-export const collection = db.collection("students");
+export const studentCollection = db.collection("students");
+export const libraryCollection = db.collection("library");
